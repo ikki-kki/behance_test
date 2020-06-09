@@ -1,0 +1,189 @@
+{
+  "data": [{
+      "id": 1,
+      "title": "최고의 Behance",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/ac144196298239.Y3JvcCwxNTI1LDExOTMsNjc5LDM5Mg.png",
+      "url": "/galleries"
+    },
+    {
+      "id": 2,
+      "title": "그래픽 디자인",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/8b58f495775889.Y3JvcCwxMTk1LDkzNSwxMzMsMA.jpg",
+      "url": "/galleries/graphic-design"
+    },
+    {
+      "id": 3,
+      "title": "포토그래피",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b76aff97394513.Y3JvcCwxMDIyLDgwMCw0NSww.jpg",
+      "url": "/galleries/photography"
+    },
+    {
+      "id": 4,
+      "title": "일러스트레이션",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/38496463675781.Y3JvcCwxMDAyLDc4NCwwLDEwOA.jpg",
+      "url": "/galleries/illustration"
+    },
+    {
+      "id": 5,
+      "title": "인터랙션",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/bdf46f96229021.Y3JvcCwxNjE2LDEyNjQsMCww.png",
+      "url": "/galleries/interaction"
+    },
+    {
+      "id": 6,
+      "title": "모션",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/8728dc97943207.Y3JvcCwxMDA3LDc4OCw5NCww.jpg",
+      "url": "/galleries/motion"
+    },
+    {
+      "id": 7,
+      "title": "건축",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/fefedf97304905.Y3JvcCwxMDIyLDgwMCw4OCww.jpg",
+      "url": "/galleries/architecture"
+    },
+    {
+      "id": 8,
+      "title": "제품 디자인",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/21f20496995851.Y3JvcCw3MjIsNTY1LDMyMyw0MzY.png",
+      "url": "/galleries/product-design"
+    },
+    {
+      "id": 9,
+      "title": "패션",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b3c05f88444211.Y3JvcCwxMzk3LDEwOTIsMCwyMzg.jpg",
+      "url": "/galleries/fashion"
+    },
+    {
+      "id": 10,
+      "title": "광고",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/9ffd8694558611.Y3JvcCw4OTAsNjk2LDI0MCw3MA.jpg",
+      "url": "/galleries/advertising"
+    },
+    {
+      "id": 11,
+      "title": "미술",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/552f8489114257.Y3JvcCwxMzg3LDEwODQsNjgsMjEy.jpg",
+      "url": "/galleries/fine-arts"
+    },
+    {
+      "id": 12,
+      "title": "공예",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/77f00d96661765.5eb341f12f450.png",
+      "url": "/galleries/crafts"
+    },
+    {
+      "id": 13,
+      "title": "게임 디자인",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/52652797326473.Y3JvcCw4MDgsNjMyLDAsMA.jpg",
+      "url": "/galleries/game-design"
+    },
+    {
+      "id": 14,
+      "title": "사운드",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/c757ca54203151.Y3JvcCw5MzYsNzMyLDAsNg.jpg",
+      "url": "/galleries/sound"
+    },
+    {
+      "id": 15,
+      "title": "Creative Challenges",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/abd29b97799951.Y3JvcCwxNjE2LDEyNjQsMCww.png",
+      "url": "/galleries/challenges"
+    },
+    {
+      "id": 16,
+      "title": "Aero",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/78d7eb87663977.Y3JvcCw0MDQsMzE2LDAsMA.jpg",
+      "url": "/galleries/aero"
+    },
+    {
+      "id": 17,
+      "title": "Fresco",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/d64aff98455725.Y3JvcCwyMDU1LDE2MDcsMzMwLDIyOA.png",
+      "url": "/galleries/fresco"
+    },
+    {
+      "id": 18,
+      "title": "Substance Painter",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/10336191506639.Y3JvcCwxNTAwLDExNzMsMCwxNDQ.jpg",
+      "url": "/galleries/substance-painter"
+    },
+    {
+      "id": 19,
+      "title": "Capture",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/d2d74489768329.Y3JvcCwyNzI4LDIxMzQsMjM2LDA.jpg",
+      "url": "/galleries/capture"
+    },
+    {
+      "id": 20,
+      "title": "Dimension",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/79de6d97835145.Y3JvcCwxMzYxLDEwNjQsNTM1LDEyMDA5.jpg",
+      "url": "/galleries/dimension"
+    },
+    {
+      "id": 21,
+      "title": "Stock",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/06deab97328247.Y3JvcCwyMjA0LDE3MjQsMzAwLDEzNg.jpg",
+      "url": "/galleries/stock"
+    },
+    {
+      "id": 22,
+      "title": "Photoshop Mix",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/c4a89836528373.Y3JvcCwxNDAwLDEwOTMsMCw3MjE.png",
+      "url": "/galleries/photoshop-mix"
+    },
+    {
+      "id": 23,
+      "title": "Photoshop Sketch",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/2a76cc98190833.Y3JvcCwxMTk1LDkzNCwxNDEsMTU5.jpg",
+      "url": "/galleries/photoshop-sketch"
+    },
+    {
+      "id": 24,
+      "title": "Illustrator Draw",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/8c377497938899.Y3JvcCwxMTkzLDkzMywxMDMsMjMz.jpg",
+      "url": "/galleries/illustrator-draw"
+    },
+    {
+      "id": 25,
+      "title": "After Effects",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/64de4095212515.Y3JvcCwxMDA3LDc4OCwyMTYsMA.jpg",
+      "url": "/galleries/after-effects"
+    },
+    {
+      "id": 26,
+      "title": "Premiere Pro",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/1eb59797332811.Y3JvcCwxMTkyLDkzMywwLDA.jpg",
+      "url": "/galleries/premiere-pro"
+    },
+    {
+      "id": 27,
+      "title": "XD",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/f79c0597003281.Y3JvcCw0MDczLDMxODYsNTU0LDE2MQ.png",
+      "url": "/galleries/xd"
+    },
+    {
+      "id": 28,
+      "title": "InDesign",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/9e146973866617.Y3JvcCwxMjc5LDEwMDAsMjgsMA.jpg",
+      "url": "/galleries/indesign"
+    },
+    {
+      "id": 29,
+      "title": "Illustrator",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/96e2f140956817.Y3JvcCw4NjAsNjczLDMyMywxNzA.jpg",
+      "url": "/galleries/illustrator"
+    },
+    {
+      "id": 30,
+      "title": "Lightroom",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/fe159f97097605.Y3JvcCw2NTU3LDUxMjksNjY1LDA.jpg",
+      "url": "/galleries/lightroom"
+    },
+    {
+      "id": 31,
+      "title": "Photoshop",
+      "img": "https://mir-s3-cdn-cf.behance.net/projects/404/ed5e3278866009.Y3JvcCwzMjkyLDI1NzUsNDY0LDcwOQ.jpg",
+      "url": "/galleries/photoshop"
+    }
+  ]
+}

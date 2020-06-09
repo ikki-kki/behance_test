@@ -2,6 +2,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
+
+    a{
+        text-decoration:none;
+    }
     * {
         box-sizing: border-box;
         padding: 0;
@@ -40,7 +44,17 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
     }
     button, input {
+<<<<<<< HEAD
         line-height: normal;
+=======
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        cursor: pointer;
+        outline: 0;
+>>>>>>> 345c2af... [Add] 헤더, 필터 nav ui 제작
     }
 `;
 
