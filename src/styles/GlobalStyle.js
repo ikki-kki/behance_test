@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         padding: 0;
         margin: 0;
-        font-family: Roboto,‘Noto Sans KR’,sans-serif;
+        font-family: Roboto,"Noto Sans KR",sans-serif;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -28,7 +28,8 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
     }
     body {
-        line-height: 1;
+        line-height: 1.3;
+        font-size: 12px;
     }
     ol, ul {
         list-style: none;
@@ -38,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         vertical-align: baseline;
     }
-    buton, input {
+    button, input {
         line-height: normal;
     }
 `;
