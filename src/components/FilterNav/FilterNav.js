@@ -3,79 +3,76 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function FilterNav() {
+  //states
   const [filterList, setFilterList] = useState([]);
+  const [clicked, setClicked] = useState(0);
+  const [transform, setTransform] = useState(0);
 
+  //useEffects
   useEffect(() => {
     loadFilterList();
   }, []);
 
+  useEffect(() => {
+    setTransform(transform);
+  }, [transform]);
+
+  //navList fetch
   const loadFilterList = async () => {
-    const response = await fetch("http://localhost:3000/Data/MainList.json");
+    const response = await fetch("http://localhost:3001/Data/MainList.json");
     const list = await response.json();
     setFilterList(list.data);
-    console.log("data", list.data);
   };
+
+  //click functions
+  const clickRight = () => {
+    // setTransform((prevState) => prevState + 210);
+    setTransform(() => transform + 210);
+    setClicked(() => clicked + 1);
+  };
+
+  const clickLeft = () => {
+    setTransform(() => transform - 210);
+    setClicked(() => clicked - 1);
+  };
+  console.log("transform", transform);
 
   return (
     <FilterNavBlock>
-      <SliderBtnLeft>
+      <SliderBtnLeft onClick={clickLeft}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="11.924"
           height="17.665"
           viewBox="0 0 11.924 17.665"
-          class="NavigationBar-arrow-1Sa"
         >
           <path
             d="M9.75,6.591l5.741,5.741L9.75,18.074l3.091,3.091,8.832-8.832L12.841,3.5Z"
             transform="translate(-9.75 -3.5)"
-            class="NavigationArrow-path-33j"
           ></path>
         </svg>
       </SliderBtnLeft>
-      <SliderBtnRight>
+      <SliderBtnRight onClick={clickRight}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="11.924"
           height="17.665"
           viewBox="0 0 11.924 17.665"
-          class="NavigationBar-arrow-1Sa"
         >
           <path
             d="M9.75,6.591l5.741,5.741L9.75,18.074l3.091,3.091,8.832-8.832L12.841,3.5Z"
             transform="translate(-9.75 -3.5)"
-            class="NavigationArrow-path-33j"
           ></path>
         </svg>
       </SliderBtnRight>
       <SeeAllBtn>
-        <svg
-          viewBox="0 0 22 8"
-          width="22"
-          height="8"
-          class="Ellipses-root-374 NavigationBar-ellipses-2KI"
-        >
-          <circle
-            cx="2.5"
-            cy="2.5"
-            r="2.5"
-            class="Ellipses-circle-27p"
-          ></circle>
-          <circle
-            cx="10.5"
-            cy="2.5"
-            r="2.5"
-            class="Ellipses-circle-27p"
-          ></circle>
-          <circle
-            cx="18.5"
-            cy="2.5"
-            r="2.5"
-            class="Ellipses-circle-27p"
-          ></circle>
+        <svg viewBox="0 0 22 8" width="22" height="8">
+          <circle cx="2.5" cy="2.5" r="2.5"></circle>
+          <circle cx="10.5" cy="2.5" r="2.5"></circle>
+          <circle cx="18.5" cy="2.5" r="2.5"></circle>
         </svg>
       </SeeAllBtn>
-      <FilterNavBox>
+      <FilterNavBox transform={transform}>
         {filterList.map((el, idx) => (
           <Link to={el.url} key={idx}>
             <FilterList>
@@ -174,7 +171,7 @@ const FilterNavBox = styled.ul`
   display: inline-flex;
   left: 50%;
   position: relative;
-  /* transform: translateX(-2%); */
+  transform: translateX(${(props) => props.transform}px);
 `;
 
 const ListOverlay = styled.div`
@@ -221,7 +218,7 @@ const ListTitle = styled.h3`
   color: #fff;
   line-height: 1.1;
   text-shadow: 0 1px 0 ${(props) => props.theme.colors.mainBlack};
-  z-index: 1;
+  z-index: 2;
 `;
 
 export default FilterNav;
