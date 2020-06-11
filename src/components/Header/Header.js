@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../Button/Button";
 
@@ -161,7 +161,7 @@ function Header({ history }) {
             </SubMenus>
           </>
         ) : (
-            <SubMenus>로그인</SubMenus>
+            <Link to= "/login"><SubMenus>로그인</SubMenus></Link>
           )}
         <SubMenus>
           <svg

@@ -1,8 +1,8 @@
-/* 기존 코드
+
 {
   "extends": ["react-app", "plugin:prettier/recommended"]
 }
-*/
+
 
 {
   "plugins": [
