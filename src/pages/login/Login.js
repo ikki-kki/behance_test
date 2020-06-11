@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import LogoImg from "./LogoImg";
 import LogoText from "./LogoText";
 import LoginBox from "./LoginBox";
@@ -12,11 +12,12 @@ const Login = (props) => {
     fetch("http://localhost:3000/data/data.json")
       .then((res) => res.json())
       .then((res) => {
-        setImg(res.data[`${Math.floor(Math.random() * res.data.length)}`].image);
+        setImg(
+          res.data[`${Math.floor(Math.random() * res.data.length)}`].image
+        );
       });
   }, []);
 
-  
   return (
     <LoginWrap img={img}>
       <LogoWrap>
