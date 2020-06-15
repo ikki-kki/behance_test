@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { Component, useState, useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
 import LogoImg from "./LogoImg";
 import LogoText from "./LogoText";
 import LoginBox from "./LoginBox";
