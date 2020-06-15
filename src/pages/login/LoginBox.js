@@ -4,36 +4,36 @@ import styled from "styled-components";
 
 //window.Kakao.init("82cf7f6d0018709360917a198e3ec3f7");
 
-const LoginBox = ({history}) => {
-  const [token, setToken] =useState("")
-   
- const loginWithKakao = () => {
-  window.Kakao.Auth.login({
-    success: (authObj) => {
-      console.log(authObj);
-      //setToken(authObj.access_token) 비동기로, 이를 사용하면 바로 이동하지 못함.
-      fetch("http://10.58.5.82:8000/user/social_login", {
-      method: "POST",
-      headers: {
-        "Authorization": authObj.access_token
-      }
+const LoginBox = ({ history }) => {
+  const [token, setToken] = useState("")
+
+  const loginWithKakao = () => {
+    window.Kakao.Auth.login({
+      success: (authObj) => {
+        console.log(authObj);
+        //setToken(authObj.access_token) 비동기로, 이를 사용하면 바로 이동하지 못함.
+        fetch("http://10.58.5.82:8000/user/social_login", {
+          method: "POST",
+          headers: {
+            "Authorization": authObj.access_token
+          }
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.token) {
+              localStorage.setItem("Login-token", res.token);
+              alert("로그인 되었습니다.");
+              history.push("/");
+            } else {
+              alert("다시 확인해주세요.")
+            }
+          })
+      },
+      fail: function (err) {
+        console.log("에러", err);
+      },
     })
-    .then((res) => res.json())
-    .then((res) => {
-      if(res.token) {
-        localStorage.setItem("Login-token", res.token);
-        alert("로그인 되었습니다.");
-        history.push("/");
-      } else {
-        alert("다시 확인해주세요.")
-      }
-    })
-    },
-    fail: function (err) {
-      console.log("에러", err);
-    },
-  })
-};
+  };
 
   return (
     <LoginBoxWrap>

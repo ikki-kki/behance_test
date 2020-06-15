@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useInfiniteScroll from "./useInfiniteScroll";
 import { CircularProgress } from '@material-ui/core';
+import { withRouter } from "react-router-dom";
 
-const MainArticles = () => {
+const MainArticles = ({ history }) => {
   /**필터 어떻게 하지?
    * 1. 카테고리를 클릭/ 가운데로 왔을 때 해당 id 값을 state에 저장하기
    * 2. mainArticle 안에서 state를 데이터 안에 이름으로 바꾸고
@@ -14,23 +15,30 @@ const MainArticles = () => {
    */
 
   //데이터로 받아온 리스트가를 8개씩 추가하는 state, 스크롤이 바닥에 닿으면 기존에서 1씩 추가
-  const [articleList, setArticleList] = useState(Array.from(Array(8).keys(), n => n + 1));
+  const [articleList, setArticleList] = useState([]);
+  //처음에 빈배열로 주고 useeffect에서 가져올 때 조건을 주기
   //fetch이 되는지를 감시하는 state
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
 
   useEffect(() => {
     loadArticles();
   }, []);
+  //cdm 로 8개 불러오는 호출
 
   //fetching이 되었을때 prevState에+ 8개 추가
-  function fetchMoreListItems() {
+  const fetchMoreListItems = async () => {
+    const response = await fetch("http://localhost:3000/Data/MainArticleList.json");
+    const list = await response.json();
     setTimeout(() => {
       setArticleList(prevState =>
-        ([...prevState, ...Array.from(Array(8).keys(), n => n + prevState.length + 1)]));
+        ([...prevState, ...list.data.slice(0, 12)]));
+      // ([...prevState, ...Array.from(Array(8).keys(), n => n + prevState.length + 1)]));
       //fetching하고 다시 false로 변경하기
       setIsFetching(false);
-    }, 2000);
+    }, 1200);
   }
+
+  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
+
 
   //메인 아티클 목데이터
   const loadArticles = async () => {
@@ -38,7 +46,7 @@ const MainArticles = () => {
       "http://localhost:3000/Data/MainArticleList.json"
     );
     const list = await response.json();
-    setArticleList(list.data);
+    setArticleList(list.data.slice(0, 12));
   };
 
   return (
@@ -46,7 +54,7 @@ const MainArticles = () => {
       < MainArticlesBlock >
         {
           articleList.map((el, idx) => (
-            <ArticleBox key={idx}>
+            <ArticleBox key={idx} onClick={() => history.push("/contents")}>
               <ArticleLists>
                 <ArticleListsBox background={el.background}>
                   <ImgOverlay>
@@ -254,4 +262,4 @@ const LikeViewText = styled.span`
   margin-left: 3px;
 `;
 
-export default MainArticles;
+export default withRouter(MainArticles);

@@ -42,6 +42,7 @@ const LoginWrap = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #000;
 `;
 const LogoWrap = styled.div`
   width: 340px;
@@ -52,6 +53,7 @@ const LogoWrap = styled.div`
 
 const BoxWrap = styled.div`
   width: 35%;
+  z-index: 4;
 `;
 //margin-top: 5%;
 //margin-right: 15%;
