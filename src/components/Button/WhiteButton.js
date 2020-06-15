@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = (props) => {
-  return <BlueButton>{props.text}</BlueButton>;
+const WhiteButtons = (props) => {
+  return <WhiteButton>{props.text}</WhiteButton>;
 };
 
-const BlueButton = styled.button`
+const WhiteButton = styled.button`
   height: 33px;
-  background-color: ${(props) => props.theme.colors.mainBlue};
-  color: #fff;
+  background-color: #fff;
+  color: ${(props) => props.theme.colors.mainBlack};
+  border: 1px solid #dbdbdb;
   font-size: 14px;
   font-weight: 500;
   padding: 8px 15px;
@@ -18,8 +19,9 @@ const BlueButton = styled.button`
   display: inline-block;
 
   &:hover {
-    background-color: #0037a1;
+    background-color: #e8e8e8;
     transition: all 0.4s ease-in-out;
   }
 `;
-export default Button;
+
+export default WhiteButtons;

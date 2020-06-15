@@ -1,22 +1,22 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 //window.Kakao.init("82cf7f6d0018709360917a198e3ec3f7");
 
 const LoginBox = (props) => {
-  const [token, setToken] =useState("")
-  
+  const [token, setToken] = useState("");
+
   const loginWithKakao = () => {
     window.Kakao.Auth.login({
       success: (authObj) => {
         console.log(authObj);
-        setToken(authObj.access_token)
+        setToken(authObj.access_token);
+        console.log(token);
       },
       fail: function (err) {
         console.log("에러", err);
       },
     });
-    
   };
 
   return (
@@ -59,10 +59,10 @@ const LoginBox = (props) => {
         {/*<button>KaKao로 계속</button>*/}
       </Section>
       <Footer>
-        <P_info>
+        <PInfo>
           reCAPTCHA로 보호되며 Google <Point>개인정보보호 정책</Point> 및{" "}
           <Point>서비스 약관</Point>의 적용을 받습니다.
-        </P_info>
+        </PInfo>
       </Footer>
     </LoginBoxWrap>
   );
@@ -70,7 +70,7 @@ const LoginBox = (props) => {
 
 export default LoginBox;
 
-const Google = styled.svg``;
+//const Google = styled.svg``;
 
 //color: ${(props) => props.theme.colors.LiginGray}
 
@@ -80,7 +80,7 @@ const LoginBoxWrap = styled.div`
   border-radius: 4px;
   font-size: 14px;
   font-weight: 400;
-  font-family: ${(props) => props.theme.fonts}
+  font-family: ${(props) => props.theme.fonts};
   line-height: 1.5;
   color: ${(props) => props.theme.colors.loginDarkGray};
 `;
@@ -128,7 +128,7 @@ const SocialLogin = styled.button`
   display: block;
   border-radius: 100px;
   border-width: 2px;
-  color: ${(props) => props.theme.colors.loginDarkGray}
+  color: ${(props) => props.theme.colors.loginDarkGray};
   font-weight: 900;
   font-size: 15px;
   height: auto;
@@ -152,7 +152,7 @@ const Footer = styled.div`
   line-height: 1.5;
   color: ${(props) => props.theme.colors.loginDarkGray};
 `;
-const P_info = styled.p`
+const PInfo = styled.p`
   color: ${(props) => props.theme.colors.loginLightGray};
   font-size: 12px;
   padding-top: 12px;
@@ -164,5 +164,3 @@ const P_info = styled.p`
 const Point = styled.span`
   color: ${(props) => props.theme.colors.loginBlue};
 `;
-
-

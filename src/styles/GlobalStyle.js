@@ -5,12 +5,12 @@ const GlobalStyle = createGlobalStyle`
 
     a{
         text-decoration:none;
+        color: #191919;
     }
     * {
         box-sizing: border-box;
         padding: 0;
         margin: 0;
-        font-family: Roboto,"Noto Sans KR",sans-serif;
     }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
+        font-family: Heebo,"Noto Sans KR", sans-serif;
         vertical-align: baseline;
     }
     body {
@@ -44,9 +44,6 @@ const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
     }
     button, input {
-<<<<<<< HEAD
-        line-height: normal;
-=======
         padding: 0;
         border: none;
         font: inherit;
@@ -54,7 +51,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: transparent;
         cursor: pointer;
         outline: 0;
->>>>>>> 345c2af... [Add] 헤더, 필터 nav ui 제작
     }
 `;
 

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const LogoImg = (props) => {
@@ -15,4 +15,3 @@ export default LogoImg;
 const Img = styled.img`
   height: 40px;
 `;
-
