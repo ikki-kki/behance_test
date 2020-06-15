@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 
 function Header({ history }) {
   //아직 토큰 없음
-  const token = localStorage.getItem("access-token");
+  const token = localStorage.getItem("Login-token");
 
   return (
     <HeaderBlock>
@@ -161,7 +161,7 @@ function Header({ history }) {
             </SubMenus>
           </>
         ) : (
-            <Link to= "/login"><SubMenus>로그인</SubMenus></Link>
+            <SubMenus onClick={() => history.push("/login")}>로그인</SubMenus>
           )}
         <SubMenus>
           <svg
@@ -201,7 +201,7 @@ const HeaderLogo = styled.svg`
 const MainMenuBox = styled.ul`
   height: 60px;
   display: flex;
-  margin-left: 100px;
+  margin-left: 7%;
   align-items: center;
   position: relative;
 `;
