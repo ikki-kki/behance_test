@@ -14,10 +14,10 @@ function ListTitles() {
         </ListDesc>
         <ButtonBox>
           <ButtonStyleBox>
-            <BlueButton text="팔로우 Illustrator" />
+            <BlueButton text="Follow Illustrator" />
           </ButtonStyleBox>
           <ButtonStyleBox>
-            <WhiteButton text="Illustrator 다운로드" />
+            <WhiteButton text="Download Illustrator" />
           </ButtonStyleBox>
         </ButtonBox>
       </ListTitleBox>

@@ -12,7 +12,7 @@ const LoginBox = ({ history }) => {
       success: (authObj) => {
         console.log(authObj);
         //setToken(authObj.access_token) 비동기로, 이를 사용하면 바로 이동하지 못함.
-        fetch("http://10.58.5.82:8000/user/social_login", {
+        fetch("http://10.58.4.193:8000/user/social_login", {
           method: "POST",
           headers: {
             "Authorization": authObj.access_token
