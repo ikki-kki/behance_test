@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 
 function Header({ history }) {
-  //아직 토큰 없음
   const token = localStorage.getItem("Login-token");
 
   return (
@@ -22,20 +21,20 @@ function Header({ history }) {
         {token ? (
           <>
             <MainMenus onClick={() => history.push("/for_you")}>
-              당신을 위한
+              For You
             </MainMenus>
-            <MainMenus onClick={() => history.push("/galleries")}>
-              탐색
+            <MainMenus onClick={() => history.push("/")}>
+              Discover
             </MainMenus>
             <MainMenus onClick={() => history.push("/유저네임")}>
-              프로필
+              Profile
             </MainMenus>
             <MainMenus
               onClick={() =>
                 history.push("/portfolio/editor?tracking_source=portfolio")
               }
             >
-              <Button text="프로젝트 제작" />
+              <Button text="Create a Project" />
             </MainMenus>
           </>
         ) : (
@@ -45,9 +44,9 @@ function Header({ history }) {
                   history.push("/portfolio/editor?tracking_source=portfolio")
                 }
               >
-                <Button text="이메일로 등록" />
+                <Button text="Sign Up With Email" />
               </MainMenus>
-              <NotLogin>또는</NotLogin>
+              <NotLogin>or</NotLogin>
               <NotLoginFbBtn>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +108,7 @@ function Header({ history }) {
           </svg>
           <SerchTooltipBox onClick={() => history.push("/search")}>
             <Pointer />
-            <SerchTooltip>검색 및 필터</SerchTooltip>
+            <SerchTooltip>Search and Filter</SerchTooltip>
           </SerchTooltipBox>
         </SubMenus>
         {token ? (
@@ -161,7 +160,7 @@ function Header({ history }) {
             </SubMenus>
           </>
         ) : (
-            <SubMenus onClick={() => history.push("/login")}>로그인</SubMenus>
+            <SubMenus onClick={() => history.push("/login")}>Sign In</SubMenus>
           )}
         <SubMenus>
           <svg
@@ -210,8 +209,8 @@ const MainMenus = styled.li`
   color: ${(props) => props.theme.colors.iconGray};
   padding: 10px 12px;
   cursor: poiner;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   list-style: none;

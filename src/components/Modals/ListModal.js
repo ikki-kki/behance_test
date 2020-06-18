@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { ModalFilterList } from "../FilterNav/FilterList/FilterList";
+import { Link } from "react-router-dom";
 const ListModal = ({ isOpen, close }) => {
+
+  const [filterList, setFilterList] = useState([]);
+
+  useEffect(() => {
+    loadFilterList();
+  }, []);
+
+  //navList fetch
+  const loadFilterList = async () => {
+    const response = await fetch("http://10.58.4.193:8000/feed/main/0");
+    const list = await response.json();
+    setFilterList(list.data.main_categories);
+  };
+
+
   return (
     <React.Fragment>
       {isOpen ? (
@@ -11,16 +26,19 @@ const ListModal = ({ isOpen, close }) => {
             <ModalBox>
               <ModalWrapper>
                 <ModalTitle>
-                  최고의 크리에이티브 분야로 이루어진 갤러리
+                  Galleries by top creative fields
                 </ModalTitle>
                 <ModalListBox>
-                  <ModalFilterList />
+                  {filterList.map((el, idx) => (
+                    <Link to="/" key={idx}>
+                      <FilterLists>
+                        <ListOverlay />
+                        <ListTitle>{el.title}</ListTitle>
+                        <FilterImg src={el.img} />
+                      </FilterLists>
+                    </Link>
+                  ))}
                 </ModalListBox>
-              </ModalWrapper>
-              <ModalWrapper>
-                <ModalTitle>
-                  최고의 크리에이티브 툴을 사용하여 제작된 갤러리
-                </ModalTitle>
               </ModalWrapper>
             </ModalBox>
           </ModalBlock>
@@ -31,6 +49,52 @@ const ListModal = ({ isOpen, close }) => {
 };
 
 // Styled-Components
+const ListOverlay = styled.div`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: ${(props) => props.theme.colors.mainBlue};
+  transition: opacity 0.15s linear;
+  z-index: 2;
+`;
+
+const FilterLists = styled.li`
+  margin: 5px 5px;
+  width: 200px;
+  height: 80px;
+  background-color: ${(props) => props.theme.colors.mainBlack};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover ${ListOverlay} {
+    opacity: 1;
+  }
+`;
+
+const FilterImg = styled.img`
+  width: 100px;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  opacity: 0.5;
+`;
+
+const ListTitle = styled.h3`
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  text-shadow: 0 1px 0 ${(props) => props.theme.colors.mainBlack};
+  z-index: 2;
+`;
+
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -48,8 +112,8 @@ const ModalBlock = styled.div`
   position: fixed;
   top: 18%;
   right: 0;
-  width: 1135px;
-  height: 500px;
+  width: 700px;
+  height: 580px;
   border-radius: 3px;
   background-color: white;
   padding: 40px 35px;

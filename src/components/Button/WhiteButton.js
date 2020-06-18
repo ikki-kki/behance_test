@@ -13,7 +13,7 @@ const WhiteButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   padding: 8px 15px;
-  margin: 0 3px;
+  margin: 0 3px 2px 0;
   border-radius: 50px;
   transition: all 0.4s ease-in-out;
   display: inline-block;

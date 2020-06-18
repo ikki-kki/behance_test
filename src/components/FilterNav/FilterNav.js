@@ -1,32 +1,66 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 import SubFilter from "./SubFilter/SubFilter";
 import ListTitles from "./ListTitles/ListTitles";
 import MainArticles from "./MainArticles/MainArticles";
 import ListModal from "../Modals/ListModal";
 
-function FilterNav() {
+function FilterNav({ match }) {
   //states
-  const [clicked, setClicked] = useState(0);
-  const [transform, setTransform] = useState(0);
   const [isModalOpen, setModal] = useState(false);
   const [filterList, setFilterList] = useState([]);
   const [clickFilter, setClickFilter] = useState([]);
-  //useEffects
-  useEffect(() => {
-    setTransform(transform);
-  }, [transform]);
+  const [copyList, setCopyList] = useState([]);
+  const [current, setCurrentIdx] = useState(0);
 
+  //useEffects
+  //------- componentDidMount
   useEffect(() => {
     loadFilterList();
-  }, []);
+  }, [match.params.id]);
+
+  //------- componentDidUpdate
+  useEffect(() => {
+    if (filterList.length > 0) {
+      // 패치로 받은 리스트가 들어온걸 확인할 땐 반드시 length 비교.
+      // [] 빈 배열도 'true'로 친다
+      setCopyList(getListItems(9, current));
+    }
+  }, [filterList])
+  /**
+   * useEffect -> 변화를 감지할 인자를 두 번째로 받는다.
+   * [] -> 컴디마
+   * [뭔가 있음] -> 안에 들어있는 애를 감지해서 실행이 됨.
+   */
+
+  const getItem = index => {
+    let i = index;
+    while (i < 0) {
+      i += filterList.length;
+      if (filterList.length === 0) {
+        break;
+      }
+    }
+    return filterList[i % filterList.length];
+  }
+
+  const getListItems = (range = 9, index = 0) => {
+    const center = Math.ceil(range / 2) - 1;
+    return Array(range)
+      .fill()
+      .map((_, i) => getItem(i - center + index));
+  }
 
   //navList fetch
   const loadFilterList = async () => {
     const response = await fetch("http://localhost:3000/Data/MainList.json");
+    // const response = await fetch("http://10.58.3.78:8000/feed/main/0?limit=12&offset=0");
+    // const response = await fetch("http://10.58.3.78:8000/feed/main/0");
     const list = await response.json();
-    setFilterList(list.data);
+    // console.log(response);
+    setFilterList(list.data.main_categories);
+    setCopyList(filterList);
   };
 
   //카테고리 클릭 필터
@@ -36,13 +70,17 @@ function FilterNav() {
 
   //click functions
   const clickRight = () => {
-    setTransform(() => transform + 210);
-    setClicked(() => clicked + 1);
+    setTimeout(() => {
+      setCopyList(getListItems(9, current - 1));
+      setCurrentIdx(current - 1);
+    }, 200);
   };
 
   const clickLeft = () => {
-    setTransform(() => transform - 210);
-    setClicked(() => clicked - 1);
+    setTimeout(() => {
+      setCopyList(getListItems(9, current + 1));
+      setCurrentIdx(current + 1);
+    }, 200);
   };
 
   // List 모달
@@ -54,9 +92,9 @@ function FilterNav() {
     setModal(false);
   };
 
-  //console.log("transform", transform);
   return (
     <>
+      {console.log(copyList)}
       <FilterNavBlock>
         <SliderBtnLeft onClick={clickLeft}>
           <svg
@@ -92,16 +130,15 @@ function FilterNav() {
           </svg>
         </SeeAllBtn>
         <ListModal isOpen={isModalOpen} close={closeModal} />
-        <FilterNavBox transform={transform}>
-          {filterList.map((el, idx) => (
-            <Link to={el.url} key={idx} onClick={chooseFilter}>
+        <FilterNavBox>
+          {copyList.length > 0 && copyList.map((el) => (
+            <Link to={`/galleries/${el.id}`} key={el.id} onClick={chooseFilter}>
               <FilterLists>
                 <ListOverlay />
                 <ListTitle>{el.title}</ListTitle>
                 <FilterImg src={el.img} />
               </FilterLists>
-            </Link>
-          ))}
+            </Link>))}
         </FilterNavBox>
       </FilterNavBlock>
       <SubFilter />
@@ -110,37 +147,6 @@ function FilterNav() {
     </>
   );
 }
-export const ModalFilterList = () => {
-  const [filterList, setFilterList] = useState([]);
-  const [listCate, setListCate] = useState([]);
-
-  useEffect(() => {
-    loadFilterList();
-  }, []);
-
-  //navList fetch
-  const loadFilterList = async () => {
-    const response = await fetch("http://localhost:3000/Data/MainList.json");
-    const list = await response.json();
-    setFilterList(list.data);
-    setListCate(list.category);
-  };
-
-  return (
-    <>
-      {listCate === "field" &&
-        filterList.map((el, idx) => (
-          <Link to={el.url} key={idx}>
-            <FilterLists>
-              <ListOverlay />
-              <ListTitle>{el.title}</ListTitle>
-              <FilterImg src={el.img} />
-            </FilterLists>
-          </Link>
-        ))}
-    </>
-  );
-};
 
 const ListOverlay = styled.div`
   opacity: 0;
@@ -185,14 +191,14 @@ const ListTitle = styled.h3`
   color: #fff;
   line-height: 1.1;
   text-shadow: 0 1px 0 ${(props) => props.theme.colors.mainBlack};
-  z-index: 2;
+  z-index: 3;
 `;
 const SliderBtnRight = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
   right: 100px;
-  z-index: 3;
+  z-index: 5;
   align-items: center;
   background-color: #fff;
   fill: ${(props) => props.theme.colors.iconGray};
@@ -246,7 +252,7 @@ const FilterNavBlock = styled.nav`
     left: 0;
     width: 200px;
     height: 100%;
-    z-index: 1;
+    z-index: 4;
     background: linear-gradient(
       -90deg,
       rgba(255, 255, 255, 0) 0%,
@@ -262,7 +268,7 @@ const FilterNavBlock = styled.nav`
     right: 0;
     width: 400px;
     height: 100%;
-    z-index: 1;
+    z-index: 4;
     background: linear-gradient(
       -90deg,
       rgba(255, 255, 255, 1) 25%,
@@ -273,10 +279,12 @@ const FilterNavBlock = styled.nav`
 
 const FilterNavBox = styled.ul`
   display: inline-flex;
-  left: 44%;
+  /* left: 44%; */
+  right: 6%;
   position: relative;
-  transform: translateX(${(props) => props.transform}px);
-  transition: transform 0.3s cubic-bezier(1, 0, 0.685, 0.69);
+  /* transform: translateX(${(props) => props.transform}px); */
+  transition: all 0.3s cubic-bezier(1, 0, 0.685, 0.69);
 `;
 
-export default FilterNav;
+export default withRouter(FilterNav);
+//라우터로 묶여있지 않으면 withRouter로 묶어줘야한다.
